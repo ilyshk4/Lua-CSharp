@@ -77,7 +77,7 @@ public readonly record struct LuaFunctionExecutionContext
             {
                 LuaRuntimeException.BadArgument(State, index + 1, type, arg.Type);
             }
-            else if (arg.Type is LuaValueType.UserData or LuaValueType.LightUserData)
+            else if (arg.Type is LuaValueType.UserData or LuaValueType.LightUserData or LuaValueType.ProxyUserData)
             {
                 LuaRuntimeException.BadArgument(
                     State,
@@ -121,7 +121,7 @@ public readonly record struct LuaFunctionExecutionContext
             {
                 LuaRuntimeException.BadArgument(State, index + 1, type, arg.Type);
             }
-            else if (arg.Type is LuaValueType.UserData or LuaValueType.LightUserData)
+            else if (arg.Type is LuaValueType.UserData or LuaValueType.LightUserData or LuaValueType.ProxyUserData)
             {
                 LuaRuntimeException.BadArgument(
                     State,

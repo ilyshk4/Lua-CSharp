@@ -163,6 +163,9 @@ public class LuaState : IDisposable
     FastListCore<UpValue> openUpValues;
     internal int CallCount;
     internal LuaGlobalState GlobalState { get; }
+
+    public void SetProxyMetatable(LuaTable table) => GlobalState.SetProxyMetatable(table);
+
     ThreadCoreData? CoreData;
     CoroutineCore? coroutine;
     internal bool IsLineHookEnabled;
