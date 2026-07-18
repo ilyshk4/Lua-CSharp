@@ -7,9 +7,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>CS0436</NoWarn>
     <!-- NuGet Packaging -->
-    <PackageId>LuaCSharp</PackageId>
-    <PackageTags>lua;interpreter</PackageTags>
-    <Description>High performance Lua interpreter implemented in C# for .NET and Unity</Description>
+    <PackageId>LuaCSharp.Safe</PackageId>
+    <PackageTags>lua;interpreter;sandbox;safe</PackageTags>
+    <Description>Sandboxed Lua interpreter - no default platform IO/system/console</Description>
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,11 +2,13 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using Lua;
+using Lua.Proxy;
 using Lua.Runtime;
 using Lua.Standard;
 
 var state = LuaState.Create();
 state.OpenStandardLibraries();
+state.EnableDynamicInterop();
 state.Environment["escape"] = new LuaFunction(
     "escape",
     (c, _) =>

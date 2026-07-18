@@ -22,12 +22,6 @@ public class LuaState : IDisposable
         coroutine = new(this, function, isProtectedMode);
     }
 
-    public static LuaState Create()
-    {
-        var globalState = LuaGlobalState.Create();
-        return globalState.MainThread;
-    }
-
     public static LuaState Create(LuaPlatform platform)
     {
         return LuaGlobalState.Create(platform).MainThread;

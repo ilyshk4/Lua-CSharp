@@ -6,6 +6,7 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Lua.Annotations\Lua.Annotations.csproj" />
+    <ProjectReference Include="..\..\src\Lua.Proxy\Lua.Proxy.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

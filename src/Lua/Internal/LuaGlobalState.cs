@@ -40,9 +40,9 @@ sealed class LuaGlobalState
     LuaTable? functionMetatable;
     LuaTable? stateMetatable;
 
-    public static LuaGlobalState Create(LuaPlatform? platform = null)
+    public static LuaGlobalState Create(LuaPlatform platform)
     {
-        LuaGlobalState globalState = new(platform ?? LuaPlatform.Default);
+        LuaGlobalState globalState = new(platform);
         return globalState;
     }
 

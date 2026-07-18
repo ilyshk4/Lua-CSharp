@@ -80,7 +80,7 @@ public class Traceback(LuaState state, ReadOnlySpan<CallStackFrame> stackFrames)
                         || p.LineInfo.Length <= frame.CallerInstructionIndex
                     )
                     {
-                        Console.WriteLine($"Trace back error");
+                        System.Diagnostics.Debug.WriteLine("Trace back error");
                         return default;
                     }
 
@@ -110,7 +110,7 @@ public class Traceback(LuaState state, ReadOnlySpan<CallStackFrame> stackFrames)
                         || p.LineInfo.Length <= frame.CallerInstructionIndex
                     )
                     {
-                        Console.WriteLine($"Trace back error");
+                        System.Diagnostics.Debug.WriteLine("Trace back error");
                         return default;
                     }
 
