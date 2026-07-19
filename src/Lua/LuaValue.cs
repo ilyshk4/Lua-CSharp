@@ -16,7 +16,6 @@ public enum LuaValueType : byte
     Thread,
     LightUserData,
     UserData,
-    ProxyUserData,
     Table,
 }
 
@@ -185,7 +184,6 @@ public readonly struct LuaValue : IEquatable<LuaValue>
                     break;
                 }
             case LuaValueType.LightUserData:
-            case LuaValueType.ProxyUserData:
             {
                 if (referenceValue is T tValue)
                 {
@@ -440,7 +438,6 @@ public readonly struct LuaValue : IEquatable<LuaValue>
             case LuaValueType.Function:
             case LuaValueType.Table:
             case LuaValueType.LightUserData:
-            case LuaValueType.ProxyUserData:
             case LuaValueType.UserData:
             {
                 var v = referenceValue!;
@@ -487,16 +484,6 @@ public readonly struct LuaValue : IEquatable<LuaValue>
             float floatValue => floatValue,
             _ => new(obj),
         };
-    }
-
-    public static LuaValue FromProxy(object obj)
-    {
-        if (obj is null)
-        {
-            return Nil;
-        }
-
-        return new(LuaValueType.ProxyUserData, default, obj);
     }
 
     public static LuaValue FromUserData(ILuaUserData? userData)
@@ -673,7 +660,6 @@ public readonly struct LuaValue : IEquatable<LuaValue>
             LuaValueType.Thread => $"thread: {referenceValue!.GetHashCode()}",
             LuaValueType.Table => $"table: {referenceValue!.GetHashCode()}",
             LuaValueType.LightUserData => $"userdata: {referenceValue!.GetHashCode()}",
-            LuaValueType.ProxyUserData => $"userdata: {referenceValue!.GetHashCode()}",
             LuaValueType.UserData => $"userdata: {referenceValue!.GetHashCode()}",
             _ => "",
         };
@@ -696,7 +682,6 @@ public readonly struct LuaValue : IEquatable<LuaValue>
             LuaValueType.Thread => "thread",
             LuaValueType.Table => "table",
             LuaValueType.LightUserData => "light userdata",
-            LuaValueType.ProxyUserData => "userdata",
             LuaValueType.UserData => "userdata",
             _ => "",
         };

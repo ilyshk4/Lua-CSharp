@@ -721,7 +721,6 @@ public sealed class BasicLibrary
                     LuaValueType.Function => "function",
                     LuaValueType.Thread => "thread",
                     LuaValueType.LightUserData => "userdata",
-                    LuaValueType.ProxyUserData => "userdata",
                     LuaValueType.UserData => "userdata",
                     LuaValueType.Table => "table",
                     _ => throw new NotImplementedException(),

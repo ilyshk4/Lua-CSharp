@@ -39,7 +39,6 @@ sealed class LuaGlobalState
     LuaTable? booleanMetatable;
     LuaTable? functionMetatable;
     LuaTable? stateMetatable;
-    LuaTable? proxyMetatable;
 
     public static LuaGlobalState Create(LuaPlatform platform)
     {
@@ -57,9 +56,6 @@ sealed class LuaGlobalState
         Platform = platform;
     }
 
-    internal void SetProxyMetatable(LuaTable table) => proxyMetatable = table;
-    internal LuaTable? GetProxyMetatable() => proxyMetatable;
-
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal bool TryGetMetatable(LuaValue value, [NotNullWhen(true)] out LuaTable? result)
     {
@@ -72,7 +68,6 @@ sealed class LuaGlobalState
             LuaValueType.Function => functionMetatable,
             LuaValueType.Thread => stateMetatable,
             LuaValueType.UserData => value.UnsafeRead<ILuaUserData>().Metatable,
-            LuaValueType.ProxyUserData => proxyMetatable,
             LuaValueType.Table => value.UnsafeRead<LuaTable>().Metatable,
             _ => null,
         };
@@ -105,9 +100,6 @@ sealed class LuaGlobalState
                 break;
             case LuaValueType.UserData:
                 value.UnsafeRead<ILuaUserData>().Metatable = metatable;
-                break;
-            case LuaValueType.ProxyUserData:
-                proxyMetatable = metatable;
                 break;
             case LuaValueType.Table:
                 value.UnsafeRead<LuaTable>().Metatable = metatable;
